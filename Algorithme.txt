@@ -1,0 +1,124 @@
+INITIALISATION :
+
+nombre_place_disponible =4
+table_destination  est vide
+Cp vide // Où la liste de client accepte par le taxi.Cette liste contiendra les points de
+                destinations de tous les clients qui ont été pris par le taxi. 
+propositions∶ Dictionnaire vide // Pour le stockage des propositions des clients présents au point de ramassage. Elle prendra comme valeurs les vecteurs clients.
+i=0;
+
+
+DEBUT :
+
+// lorsque le véhicule est vide 
+Fonction choix_client(Sn,Sm,Pi,Ni){
+        Tant que Vrai {
+                Pour i allant de 1 à 3,faire{
+                        Pour ci ϵ C,{
+                                
+                                choix_prix (Pi,Ni)
+                        
+                        }
+                }
+
+                client_pris(propositions)
+
+        }
+
+}
+// lorsqu’on a au moins un client dans le véhicule
+Fonction choix_client_suivant (Sn,Sm,Pi,Ni) {
+        Tant que (table_destination n’est pas vide && nombre_place_disponible> 0) faire {
+
+                Max(table_destination) //représente le plus long chemin à parcourir dans la table de destination
+                Pour i allant de 1 à 3,faire{
+                        Pour ci ϵ C, {
+                                Si (Ni > nombre_place_disponible){
+                                        Retourner (‘Refuse’)   
+                                }
+                                Sinon {
+                                        Calcul Djikstra (Sn,Sm)
+                                        Faire une comparaison entre Djikstra( Sn,Sm)  et Max(table_destination)
+                                        Si (Max(table_destination )inclu dans Djikstra( Sn,Sm) )    {
+                                                Verifier si Dernier sommet de Max(table_destination )ϵ au sous-graphe d'au moins un  des sommets de Djikstra( Sn,Sm)  
+                                                Si oui  {
+                                                        choix_prix (Pi,Ni)
+                                                }
+                                                
+                                                Sinon {
+                                                        Retourner (‘Impossible’)  
+                                                        }
+                                        
+                                        }
+                                        Sinon {
+                                                Verifier si Dernier sommet de Djikstra( Sn,Sm)  ϵ au sous-graphe d'au moins un  des sommets de Max(table_destination)
+                                                Si oui {
+                                                        choix_prix (Pi,Ni )
+                                                }
+                                                Sinon {
+                                                        Retourner (‘Impossible’) 
+                                                }
+                                        
+
+                                        }
+                                }
+                
+                        }
+
+                }
+                client_pris(propositions)
+
+
+                //Véhicule plein
+                Si (nombre_place_disponible =0){
+                        Depot_client(Ci) //On dépose les clients à partir du client ayant la plus petite destination
+                }
+
+        }
+
+}
+
+Fonction Depot_client(Ci){
+        Pour chaque cpi ϵ Cp,{
+                pour chaque si∈S, //S étant l’ensemble des sommets {
+                        Si (si== cpi){                           
+                        
+                                Supprimer cpi dans Cp et Supprimer Djikstra(.,cpi)  de table_destination et
+                                nombre_place_disponible= nombre_place_disponible + Ni
+                                
+                        }
+                }
+        }
+}
+
+Fonction choix_prix (Pi,Ni){
+
+        p <-- P (Djikstra (Sn,Sm)) // où  P(Djikstra(Sn,Sm)) est le prix pour parcourir le trajet retourné par Djikstra(Sn,Sm)
+                Si ((Pi/Ni) ≥ p){
+                         //insérer dans proposition tous les paramètres du client 
+                propositions[i] <-- Sn,Sm,Pi,Ni 
+                }
+                Sinon{
+                         Retourner(‘Refuse’)
+                }
+
+
+}
+
+Fonction client_pris(propositions){
+
+        classer par ordre décroissant de Pi le dictionnaire proposition
+        retourner(proposition[1])
+        nombre_place_disponible = nombre_place_disponible -Ni 
+        Ajouter Djikstra(Sn,Sm)  à table_destination
+        Ajouter Sm à Cp
+        Retourner (‘Accepté’)
+        supprimer (propositions) // Supprimer toutes les entrées du dictionnaire propositions (Le reinitialiser)
+
+}
+
+
+
+
+
+
