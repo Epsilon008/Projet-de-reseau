@@ -80,7 +80,7 @@ Fonction choix_client_suivant (Sn,Sm,Pi,Ni) {
 
 Fonction Depot_client(Ci){
         Pour chaque cpi ϵ Cp,{
-                pour chaque si∈S, //S étant l’ensemble des sommets {
+                pour chaque si ∈ S, //S étant l’ensemble des sommets {
                         Si (si== cpi){                           
                         
                                 Supprimer cpi dans Cp et Supprimer Djikstra(.,cpi)  de table_destination et
