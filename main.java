@@ -17,14 +17,17 @@ public class Main {
         graph.addEdge(3, 5, 5);
         graph.addEdge(4, 5, 2);
 
-        int source = 0;  // Sommet source
-        int destination = 5;  // Sommet destination
-        List<String> path = graph.calculateDijkstra(source, destination);
 
-        if (path.isEmpty()) {
+        
+        int source = 0;
+        int destination = 5;
+        Graph.DijkstraResult result = graph.calculateDijkstra(source, destination);
+        
+        if (result.getPath().isEmpty()) {
             System.out.println("Aucun chemin trouvé de " + source + " à " + destination);
         } else {
-            System.out.println("Chemin le plus court de " + source + " à " + destination + ": " + String.join(" -> ", path));
+            System.out.println("Chemin le plus court de " + source + " à " + destination + ": " + String.join(" -> ", result.getPath()));
+            System.out.println("Poids du chemin le plus court: " + result.getWeight());
         }
 
         // Taxi taxi = new Taxi(4); // Créer une instance de Taxi avec 4 places disponibles

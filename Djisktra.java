@@ -1,7 +1,3 @@
-// public class Djisktra {
-    
-// }
-
 import java.util.*;
 
 class Graph {
@@ -21,7 +17,25 @@ class Graph {
         adjList.get(source).add(edge);
     }
 
-    public List<String> calculateDijkstra(int source, int destination) {
+    public class DijkstraResult {
+        private List<String> path;
+        private int weight;
+
+        public DijkstraResult(List<String> path, int weight) {
+            this.path = path;
+            this.weight = weight;
+        }
+
+        public List<String> getPath() {
+            return path;
+        }
+
+        public int getWeight() {
+            return weight;
+        }
+    }
+
+    public DijkstraResult calculateDijkstra(int source, int destination) {
         int[] distances = new int[V];
         int[] previous = new int[V];
         Arrays.fill(distances, Integer.MAX_VALUE);
@@ -57,9 +71,11 @@ class Graph {
         }
 
         if (previous[destination] == -1) {
-            return Collections.emptyList();  // Aucun chemin trouvé
+            return new DijkstraResult(Collections.emptyList(), -1); // Aucun chemin trouvé
         } else {
-            return reconstructPath(previous, source, destination);
+            List<String> path = reconstructPath(previous, source, destination);
+            int weight = distances[destination];
+            return new DijkstraResult(path, weight);
         }
     }
 
@@ -96,5 +112,3 @@ class Graph {
         }
     }
 }
-
-
