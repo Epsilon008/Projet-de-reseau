@@ -78,12 +78,12 @@ class Taxi {
 
 class Client {
     // C étant le dictionnaire de tous les clients
-    Map<String, Integer> C = new HashMap<>();
+    Map< Integer,List<Object>> C = new HashMap<>();
     String pointDepart;
     String destination;
     int nombrePlacesVoulu;
     int prixPropose;
-    List<Object> parametreClient = new ArrayList<>();
+    int autoIncrementKey = 1;
 
     public Client(String pointDepart, String destination, int nombrePlacesVoulu, int prixPropose) {
         this.C = new HashMap<>();
@@ -93,18 +93,23 @@ class Client {
         this.prixPropose = prixPropose;
 
 
+        
+        
+        
+    }
+
+    public void ajoutClient(String Sn, String Sm, int Pi, int Ni) {
+        List<Object> parametreClient = new ArrayList<>();
         parametreClient.add(pointDepart);
         parametreClient.add(destination);
         parametreClient.add(nombrePlacesVoulu);
         parametreClient.add(prixPropose);
         
+
+            C.put(autoIncrementKey, parametreClient);
+        
         
     }
-
-    public Map<String, Integer> ajoutClient(String Sn, String Sm, int Pi, int Ni) {
-        return null;
-    }
-
     
 
     // Getters et setters pour les attributs
