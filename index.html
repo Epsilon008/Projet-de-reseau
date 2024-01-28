@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="head-bg"></div>
+
+    <div class="page-container">
+
+        <div class="profile-container">
+
+            <span class="profile-pic-container"> <img src="./images/chou.png" alt="profile-pic" class="profile-pic"> </span>
+
+            <div class="profile-info">
+                <p>
+                    <span class="person-pic-container"> <!--<img src="" class="person-pic" alt="person-pic">--> <i class='bx bxs-microphone'></i> </span>
+                    <span> Frantz TAPAMO </span>
+                </p>
+                <p>
+                    <span class="tel-pic-container"> <!--<img src="" class="tel-pic" alt="tel-pic">--> <i class='bx bxs-phone'></i> </span> 
+                    <span> +237 697002469 </span>
+                </p>
+            </div>
+
+            <button class="log-out">Log Out</button>
+
+        </div>
+
+        <div class="reserv-container">
+
+            <h1> Commandez votre taxi </h1>
+
+            <form action="">
+
+                <div className="infield pt-depart">
+                    <i class='bx bxs-navigation'></i>
+                    <input type="text" placeholder="Lieu de départ" />
+                    <label></label>
+                </div>
+
+                <div className="infield navigation">
+                    <i class='bx bxs-navigation'></i>
+                    <input type="text" placeholder="Destination" />
+                    <label></label>
+                </div>
+
+                <div className="infield price">
+                    <i class='bx bx-money'></i>
+                    <input type="number" placeholder="Price" />
+                    <label></label>
+                </div>
+
+            </form>
+
+            <button class="command"> Commandez </button>
+
+        </div>
+
+    </div>
+</body>
+</html>

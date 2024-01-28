@@ -1,0 +1,197 @@
+* {
+
+    margin: 0;
+    padding: 0;
+
+}
+
+.head-bg {
+
+    position: fixed;
+    width: 100%;
+    height: 250px;
+    background-color: blue;
+    z-index: -1;
+    
+}
+
+.page-container {
+
+    padding: 100px;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+
+}
+
+.profile-container {
+
+    background-color: aliceblue;
+    padding: 85px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 20%;
+    height: 350px;
+    border-radius: 10px;
+    border: solid 0px;
+    -webkit-box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.32);
+    -moz-box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.32);
+    box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.32);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+}
+
+.profile-container .profile-pic-container {
+
+    border-radius: 50%;
+    border: 4px solid blue;
+    object-fit: cover;
+    padding: 15px;
+    background-color: aqua;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+
+}
+
+.profile-container .profile-pic-container:hover {
+
+    -webkit-transform: scale(110%);
+
+}
+
+.profile-container .profile-pic-container .profile-pic {
+
+    position: relative;
+    width: 150px;
+
+}
+
+.profile-container .profile-info {
+
+    font-size: larger;
+    justify-content: center;
+
+}
+
+.profile-container .profile-info p {
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profile-container .profile-info p span:nth-of-type(1) {
+
+    font-size: x-large;
+    color: blue;
+
+}
+
+.profile-container .profile-info p span:nth-of-type(2) {
+
+    font-size: 30px;
+
+}
+
+.profile-container .log-out {
+
+    width: 150px;
+    padding: 25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+    color: white;background-color: blue;
+    border: 0px solid;
+    border-radius: 5px;
+    font-weight: bolder;
+    transition: 0.5s;
+
+}
+
+.profile-container .log-out:hover {
+
+    background-color: rgba(0, 0, 255, 0.671);
+
+}
+
+.reserv-container {
+
+    padding: 50px;
+    width: 70%;
+    height: 700px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    -webkit-box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.32);
+    -moz-box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.32);
+    box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.32);
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.reserv-container h1{
+
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 50px;
+    color: rgb(61, 60, 60);
+
+}
+
+.reserv-container .command {
+
+    width: 150px;
+    padding: 25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+    color: white;
+    background-color: blue;
+    border: 0px solid;
+    border-radius: 5px;
+    font-weight: bolder;
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    translate: -50% 0;
+    transition: 0.5s;
+
+}
+
+.reserv-container .command:hover {
+
+    background-color: rgba(0, 0, 255, 0.671);
+
+}
+
+.reserv-container form {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px ;
+    gap: 50px;
+
+}
+
+.reserv-container form i {
+
+    color: blue;
+    font-size: 30px;
+    padding-right: 15px;
+
+}
+
+.reserv-container form input {
+
+    width: 30%;
+    padding: 30px;
+    border: none;
+    border-radius: 7px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    transition: 0.5s;
+
+}
