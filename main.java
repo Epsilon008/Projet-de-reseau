@@ -1,3 +1,4 @@
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -5,37 +6,37 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        int V = 6;  // Nombre de sommets dans le graphe
-        Graph graph = new Graph(V);
+        // int V = 6;  // Nombre de sommets dans le graphe
+        // Graph graph = new Graph(V);
 
-        // Ajouter les arêtes et les poids
-        graph.addEdge(0, 1, 2);
-        graph.addEdge(0, 2, 4);
-        graph.addEdge(1, 2, 1);
-        graph.addEdge(1, 3, 7);
-        graph.addEdge(2, 4, 3);
-        graph.addEdge(3, 4, 1);
-        graph.addEdge(3, 5, 5);
-        graph.addEdge(4, 5, 2);
+        // // Ajouter les arêtes et les poids
+        // graph.addEdge(0, 1, 2);
+        // graph.addEdge(0, 2, 4);
+        // graph.addEdge(1, 2, 1);
+        // graph.addEdge(1, 3, 7);
+        // graph.addEdge(2, 4, 3);
+        // graph.addEdge(3, 4, 1);
+        // graph.addEdge(3, 5, 5);
+        // graph.addEdge(4, 5, 2);
 
 
         
-        int source = 0;
-        int destination = 5;
-        Graph.DijkstraResult result = graph.calculateDijkstra(source, destination);
+        // int source = 0;
+        // int destination = 5;
+        // Graph.DijkstraResult result = graph.calculateDijkstra(source, destination);
         
-        if (result.getPath().isEmpty()) {
-            System.out.println("Aucun chemin trouvé de " + source + " à " + destination);
-        } else {
-            System.out.println("Chemin le plus court de " + source + " à " + destination + ": " + String.join(" -> ", result.getPath()));
-            System.out.println("Poids du chemin le plus court: " + result.getWeight());
-        }
+        // if (result.getPath().isEmpty()) {
+        //     System.out.println("Aucun chemin trouvé de " + source + " à " + destination);
+        // } else {
+        //     System.out.println("Chemin le plus court de " + source + " à " + destination + ": " + String.join(" -> ", result.getPath()));
+        //     System.out.println("Poids du chemin le plus court: " + result.getWeight());
+        // }
 
        
          Scanner scanner = new Scanner(System.in);
         Client client = null;
         
-        while (true) {
+        
             System.out.println("Choisissez une option :");
             System.out.println("1. Client");
             System.out.println("2. Chauffeur");
@@ -45,10 +46,10 @@ public class Main {
             
             if (choix == 1) {
                 System.out.print("Entrez votre point de départ : ");
-                String pointDepart = scanner.next();
+                Integer pointDepart = scanner.nextInt();
                 
                 System.out.print("Entrez votre destination : ");
-                String dest = scanner.next();
+                Integer dest = scanner.nextInt();
                 
                 System.out.print("Entrez le nombre de places voulu : ");
                 int nombrePlacesVoulu = scanner.nextInt();
@@ -60,6 +61,9 @@ public class Main {
                 client.ajoutClient(pointDepart, dest, nombrePlacesVoulu, prixPropose);
                 
                 System.out.println("Vous avez été enregistré. Veuillez patienter en attendant qu'un taxi soit trouvé pour votre déplacement.");
+
+                Taxi taxi1 = new Taxi(4);
+                Taxi.choixClient(pointDepart, dest, prixPropose, nombrePlacesVoulu);
             } else if (choix == 2) {
                 // Option chauffeur
                 System.out.println("Fonctionnalité chauffeur non implémentée.");
@@ -70,8 +74,8 @@ public class Main {
             }
         }
         
-        scanner.close();
+        
 
 
-    }
+    
 }
