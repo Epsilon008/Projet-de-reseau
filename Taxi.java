@@ -132,11 +132,15 @@ public class Taxi {
                 if (client.getNombrePlacesVoulu() > nombre_place_disponible) {
                     if (plusLongChemin.contains(plusCourtChemin)) {
                         clientsEmbarques.add(client);
+                        table_destination.add(plusCourtChemin);
+                        pointArret.add(client.getDestination());
                         clientsPotentiels.remove(client);
                         nombre_place_disponible = nombre_place_disponible - client.getNombrePlacesVoulu();
                     } else if (plusCourtChemin.contains(plusLongChemin)) {
                         clientsPotentiels.remove(client);
                         clientsEmbarques.add(client);
+                        table_destination.add(plusCourtChemin);
+                        pointArret.add(client.getDestination());
                         nombre_place_disponible = nombre_place_disponible - client.getNombrePlacesVoulu();
                     } else {
                         System.out.println("Error");
@@ -206,10 +210,10 @@ public class Taxi {
     }
 
     public void choixClient() {
-            for (Client client : clients) {
-                choixPrix(client);
-            }
-            clientPris(clientsPotentiels);
+        for (Client client : clients) {
+            choixPrix(client);
+        }
+        clientPris(clientsPotentiels);
     }
 
     private String max(List<String> listeChaine) {
@@ -227,5 +231,4 @@ public class Taxi {
         }
     }
 
-    
 }
