@@ -1,11 +1,15 @@
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
+
+    Client client = new Client();
     public static void main(String[] args) {
+    
         // int V = 6;  // Nombre de sommets dans le graphe
         // Graph graph = new Graph(V);
 
@@ -35,8 +39,7 @@ public class Main {
        
          Scanner scanner = new Scanner(System.in);
         Client client = null;
-        
-        
+        Taxi taxi = new Taxi(4);
             System.out.println("Choisissez une option :");
             System.out.println("1. Client");
             System.out.println("2. Chauffeur");
@@ -58,17 +61,18 @@ public class Main {
                 int prixPropose = scanner.nextInt();
                 
                 client = new Client(pointDepart, dest, nombrePlacesVoulu, prixPropose);
-                client.ajoutClient(pointDepart, dest, nombrePlacesVoulu, prixPropose);
+                taxi.ajoutClient(pointDepart, dest, nombrePlacesVoulu, prixPropose);
+                taxi.clients
                 
                 System.out.println("Vous avez été enregistré. Veuillez patienter en attendant qu'un taxi soit trouvé pour votre déplacement.");
 
                 Taxi taxi1 = new Taxi(4);
-                Taxi.choixClient(pointDepart, dest, prixPropose, nombrePlacesVoulu);
+                taxi1.choixClient(pointDepart, dest, prixPropose, nombrePlacesVoulu);
             } else if (choix == 2) {
                 // Option chauffeur
                 System.out.println("Fonctionnalité chauffeur non implémentée.");
             } else if (choix == 3) {
-                break;
+              
             } else {
                 System.out.println("Option invalide. Veuillez choisir à nouveau.");
             }

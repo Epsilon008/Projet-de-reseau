@@ -10,11 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Taxi {
-    String accepter = "Accepté";
+    String accepterP = "Accepté vous êtes suceptible d'être pris";
+    String accepter = "Accepté vous êtes pris";
     String refuse = "Refusé";
     List<String> table_destination;
     int nombre_place_disponible;
+    List<Client> clients;
 
+
+    public void ajoutClient(Integer Sn, Integer Sm, int Pi, int Ni) {
+        clients.add(new Client(Sn, Sm, Pi, Ni));
+
+    }
     Map<Integer, Integer> Cp = new HashMap<>(); // Cp dictionnaire ayant comme clé les points de destinations et comme
                                                 // valeur correspondante le nombre de place
     public static Map<Integer, List<Integer>> propositions = new HashMap<>(); // Pour le stockage des propositions des
@@ -34,20 +41,9 @@ class Taxi {
 
     int autoIncrementKey = 1;
 
-    public void choixClient(int Sn, int Sm, int Pi, int Ni) {
-        for (int i = 1; i <= 3; i++) {
-            Iterator<Map.Entry<Integer, List<Object>>> iterator = Client.C.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry<Integer, List<Object>> entry = iterator.next();
-                int key = entry.getKey();
-                List<Object> parametre = entry.getValue();
-                int pointDepart = ((Number) parametre.get(0)).intValue();
-                int pointDestination = ((Number) parametre.get(1)).intValue();
-                int prixProposé = ((Number) parametre.get(3)).intValue();
-                int nbreplaceDemandé = ((Number) parametre.get(2)).intValue();
-    
-                choixPrix(prixProposé, nbreplaceDemandé, pointDepart, pointDestination);
-            }
+    public void choixClient(int Sn, int Sm, int Pi, int Ni, List<Client> clients) {
+        for(Client client : clients){
+            choixPrix(client.prixPropose, client.nombrePlacesVoulu, client.pointDepart, client.destination);
         }
     
         clientPris(propositions);
@@ -77,16 +73,19 @@ class Taxi {
         Graph.DijkstraResult result = graph.calculateDijkstra(Sn, Sm);
         String path = result.getPath();
         int P = result.getWeight();
-        if ((P / Pi) >= P) {
+        if ((Pi / Ni) >= P) {
             // Insérons dans propositions tous les paramètres du client correspondant
             List<Integer> parametreClient = new ArrayList<>();
             parametreClient.add(Pi);
             parametreClient.add(Ni);
             parametreClient.add(Sn);
             parametreClient.add(Sm);
+            for(int i = 0;i < parametreClient.size();i++){
+            System.out.println(parametreClient.get(i));
+            } 
             propositions.put(autoIncrementKey, parametreClient);
             autoIncrementKey++;
-
+            System.out.println(accepter);
         } else {
             System.out.println(refuse);
         }
@@ -146,6 +145,7 @@ class Taxi {
         String path = result.getPath();
         table_destination.add(path);
         Cp.put(premierElement.get(3), premierElement.get(1));
+        System.out.println("Vous emprunterez le chemin suivant: "+path);
         propositions.clear();
         propositionsTrié.clear();
         return accepter;
@@ -158,11 +158,10 @@ class Taxi {
     
 
         public void choixClientSuivant(int Sn, int Sm, int Pi, int Ni) {
- // Logique pour choisir le prochain client à prendre en charge en fonction de
-        // l'algorithme décrit
+            // Logique pour choisir le prochain client à prendre en charge en fonction de
+            // l'algorithme décrit
 
-            // int nombrePlaceDisponible;
-            // String[] tableDestination;
+                
     
             while (table_destination.size() > 0 && placesDisponibles > 0) {
                 max(table_destination); // Représente le plus long chemin à parcourir dans la table de destination
@@ -250,15 +249,6 @@ class Taxi {
             return plusPetiteChaine;
         }       
 }
-//     private String min(List<String> listeDeChaines) {
-//         String plusPetit = listeDeChaines.get(0);
-//         for (String chaine : listeDeChaines) {
-//             if (chaine.length() < plusPetit.length()) {
-//                 plusPetit = chaine;
-//             }
-//         }
-//         return plusPetit;
-//     }
 
     public void depotClient(String destination) {
 
@@ -289,34 +279,7 @@ class Taxi {
     }
 }
 
-class Client {
-    // C étant le dictionnaire de tous les clients
-    public static Map<Integer, List<Object>> C = new HashMap<>();
-    int pointDepart;
-    int destination;
-    int nombrePlacesVoulu;
-    int prixPropose;
-    int autoIncrementKey = 1;
 
-    public Client(int pointDepart, int destination, int nombrePlacesVoulu, int prixPropose) {
-        this.C = new HashMap<>();
-        this.pointDepart = pointDepart;
-        this.destination = destination;
-        this.nombrePlacesVoulu = nombrePlacesVoulu;
-        this.prixPropose = prixPropose;
-    }
 
-    public void ajoutClient(Integer Sn, Integer Sm, int Pi, int Ni) {
-        List<Object> parametreClient = new ArrayList<>();
-        parametreClient.add(pointDepart);
-        parametreClient.add(destination);
-        parametreClient.add(nombrePlacesVoulu);
-        parametreClient.add(prixPropose);
-        C.put(autoIncrementKey, parametreClient);
-        autoIncrementKey++;
-
-    }
-
-}
 
 
