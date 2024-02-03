@@ -187,23 +187,19 @@ public class Taxi {
 
     public Graph.DijkstraResult createGraph(int pointSource, int pointDestination) {
         Graph graph = new Graph(11);
-        graph.addEdge(0, 1, 300);
-        graph.addEdge(0, 2, 300);
-        graph.addEdge(1, 2, 300);
-        graph.addEdge(1, 3, 300);
-        graph.addEdge(2, 4, 300);
-        graph.addEdge(2, 3, 300);
-        graph.addEdge(3, 4, 300);
-        graph.addEdge(3, 5, 300);
-        graph.addEdge(4, 5, 300);
+        graph.addEdge(0, 5, 300);
+        graph.addEdge(2, 1, 300);
+        graph.addEdge(1, 9, 200);
+        graph.addEdge(9, 8, 400);
+        graph.addEdge(8, 4, 200);
+        graph.addEdge(10, 8, 400);
+        graph.addEdge(10, 5, 200);
         graph.addEdge(5, 6, 300);
-        graph.addEdge(5, 7, 300);
-        graph.addEdge(6, 7, 300);
-        graph.addEdge(6, 2, 300);
-        graph.addEdge(7, 8, 300);
-        graph.addEdge(8, 9, 300);
-        graph.addEdge(9, 10, 300);
-        graph.addEdge(10, 8, 300);
+        graph.addEdge(5, 7, 200);
+        graph.addEdge(10, 0, 100);
+        graph.addEdge(3, 0, 200);
+        graph.addEdge(1, 3, 300);
+
 
         Graph.DijkstraResult result = graph.calculateDijkstra(pointSource, pointDestination);
         return result;
